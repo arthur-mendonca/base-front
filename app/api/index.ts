@@ -6,7 +6,7 @@ class AxiosConnection {
 
     constructor(api?: string) {
         this.api = axios.create({
-            baseURL: api || `https://project-base.72-60-1-117.nip.io`,
+            baseURL: api || ((import.meta as any).env?.VITE_API_BASE_URL)
         });
         this.api.interceptors.request.use((config) => {
             const authToken = getCookie("authToken");
